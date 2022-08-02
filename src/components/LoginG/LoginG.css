@@ -1,0 +1,28 @@
+
+.loginBtn
+{
+    width: 300px;
+    border: 1px solid white;
+    border-radius: 20px;
+    background-color: whitesmoke;
+    height: 40px;
+    outline: none !important;
+}
+.loginBtn:hover
+{
+    background-color: wheat;
+}
+.loginBox{
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 20px;
+    height: 300px;
+    box-shadow: 5px 20px 20px ;
+   background-color: transparent;
+
+    
+}
+.bgg{
+    background-image: url(../../Images/1stb.jfif);
+    height: 100vh;
+}
