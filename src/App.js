@@ -1,41 +1,44 @@
-import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from './components/Header/Header'; 
-import StudentHome from './components/StudentHome/StudentHome';
-import Home from './components/Home/Home'
-import { Route, Routes } from 'react-router-dom';
-import { createContext, useState } from 'react';
-import Login from './components/Login/Login';
-import { useEffect } from 'react';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
+import { createContext, useEffect, useState } from 'react';
+import { Route, Routes, useLocation } from "react-router-dom";
 import firebaseConfig from '../src/components/Login/firebase.config';
+import './App.css';
+import Header from './components/Header/Header';
+import Home from './components/Home/Home';
+import Login from './components/Login/Login';
 import LoginG from './components/LoginG/LoginG';
-import Main from './components/Teachers/Main/Main';
-import Update from './components/Teachers/Main/Update';
+import StudentHome from './components/StudentHome/StudentHome';
 import MainS from './components/Students/MainS';
 import Check from './components/Teachers/Main/Check';
+import Main from './components/Teachers/Main/Main';
 import StudentsInfo from './components/Teachers/Main/StudentsInfo';
+import Update from './components/Teachers/Main/Update';
 export const userContext = createContext()
-function App() {
+function App(props) {
+  const location=useLocation()
+  console.log(location.state)
   if (firebase.apps.length === 0) {
     firebase.initializeApp(firebaseConfig);
 }
   const [loggedInuser, setLoggedInUser] = useState({})
   useEffect(()=>{
     firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
+      if (user && user.emailVerified) {
         const signedInUser = {name:user.displayName,email: user.email,uid:user.uid,img:user.photoURL}
         setLoggedInUser(signedInUser);
         console.log(user)
         // ...
       } else {
+        
         setLoggedInUser({});
+        console.log(user)
       }
     });
    
 
-},[])
+},[location.state])
   return (
     <userContext.Provider value={[loggedInuser, setLoggedInUser]}>
       <Header/>

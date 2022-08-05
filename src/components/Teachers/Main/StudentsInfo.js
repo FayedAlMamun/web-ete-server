@@ -1,9 +1,7 @@
 import { Card, CardActionArea, CardContent, Grid, makeStyles, Typography } from '@material-ui/core';
-import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import bg from '../../../Images/1stb.jfif'
+import bg from '../../../Images/1stb.jfif';
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -16,7 +14,8 @@ const useStyles = makeStyles((theme) => ({
     card: {
         maxWidth: 345,
         margin: 'auto',
-        background:'transparent'
+        background:'transparent',
+        boxShadow: '5px 25px 25px '
     },
     media: {
         height: 140,
@@ -41,6 +40,9 @@ const StudentsInfo = () => {
     }, [])
     const findRes = results.filter(data => series === data.series)
     console.log(findRes);
+    findRes.sort(function(a,b){
+        return a.roll-b.roll;
+    })
     const classes = useStyles();
     return (
         <Grid container spacing={3} justifyContent="center" className={classes.grid}>
