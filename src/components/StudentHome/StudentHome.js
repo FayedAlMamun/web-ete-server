@@ -1,11 +1,11 @@
 import {
-    Box,
-    Button,
-    InputLabel,
-    MenuItem,
-    Modal,
-    Select,
-    TextField
+  Box,
+  Button,
+  InputLabel,
+  MenuItem,
+  Modal,
+  Select,
+  TextField
 } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -69,7 +69,7 @@ const StudentHome = () => {
   const [admins, setAddmins] = useState([]);
   const handleBlur = (event) => {
     const newUserInfo = { ...series };
-    newUserInfo[event.target.name] = event.target.name ? semester[event.target.value] :event.target.value ;
+    newUserInfo[event.target.name] = event.target.name==='sem' ? semester[event.target.value] :event.target.value ;
     setSeries(newUserInfo);
   };
   useEffect(() => {
