@@ -8,6 +8,7 @@ import './App.css';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
+import Reset from './components/Login/Reset';
 import LoginG from './components/LoginG/LoginG';
 import StudentHome from './components/StudentHome/StudentHome';
 import MainS from './components/Students/MainS';
@@ -52,6 +53,7 @@ function App(props) {
         <Route path="/seeS/:id/:sem" element={<MainS/>}/>
         <Route path="/check/:id/:series/:sem/:cname/:roll" element={<Check/>}/>
         <Route path="/sinfot/:series" element={<StudentsInfo/>}/>
+        <Route path="/reset" element={<Reset/>}/>
 
       </Routes>
     </userContext.Provider>

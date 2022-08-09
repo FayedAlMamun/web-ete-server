@@ -2,41 +2,40 @@ import { Box, Button, Card, makeStyles, TextField } from "@material-ui/core";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import React, { useContext, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { userContext } from "../../App";
 import firebaseConfig from "./firebase.config";
 import "./Login.css";
 const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-    },
-    paper: {
-        padding: theme.spacing(2),
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
-    },
-    card: {
-        maxWidth: '50%',
-        margin: 'auto',
-        background: 'transparent',
-        boxShadow: '5px 25px 25px ',
-        border:'4px solid black'
-    },
-    media: {
-        height: 140,
-    },
-    grid: {
-        height: '100%',
-        alignItems: 'center',
-       
-    },
-    type: {
-        textAlign: 'center'
-    },
-    textField:{
-        backgroundColor:'transparent',
-        fontWeight: 900
-    }
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+  },
+  card: {
+    maxWidth: "50%",
+    margin: "auto",
+    background: "transparent",
+    boxShadow: "5px 25px 25px ",
+    border: "4px solid black",
+  },
+  media: {
+    height: 140,
+  },
+  grid: {
+    height: "100%",
+    alignItems: "center",
+  },
+  type: {
+    textAlign: "center",
+  },
+  textField: {
+    backgroundColor: "transparent",
+    fontWeight: 900,
+  },
 }));
 
 const Login = () => {
@@ -155,6 +154,7 @@ const Login = () => {
     setUser(newUserInfo);
     setNewUser(!newUser);
   };
+  
   const classes = useStyles();
   return (
     <div className="text-center  bg">
@@ -177,7 +177,6 @@ const Login = () => {
           <form onSubmit={handleSubmit}>
             {newUser && (
               <textField
-                
                 type="text"
                 name="name"
                 onBlur={handleBlur}
@@ -256,11 +255,7 @@ const Login = () => {
                 type="submit"
                 value={newUser ? "Created an Account" : "Login"}
               /> */}
-            <Button
-              variant="contained"
-              className="input submit"
-              type="submit"
-            >
+            <Button variant="contained" className="input submit" type="submit">
               {newUser ? "Created an Account" : "Login"}
             </Button>
             <br /> <br />
@@ -272,14 +267,29 @@ const Login = () => {
                 </span>
               </p>
             ) : (
-              <p style={{ color: "black", fontWeight: "700" }}>
-                Don't have an account?{" "}
-                <span style={{ cursor: "pointer" }} onClick={toggole}>
-                  <u style={{ color: "black", fontWeight: "700" }}>
-                    Create an account
-                  </u>
-                </span>
-              </p>
+              <div>
+                <Link to='/reset'>
+                  <p>
+                    <u
+                      style={{
+                        cursor: "pointer",
+                        color: "black",
+                        fontWeight: "700",
+                      }}
+                    >
+                      Forgotten password?
+                    </u>
+                  </p>
+                </Link>
+                <p style={{ color: "black", fontWeight: "700" }}>
+                  Don't have an account?{" "}
+                  <span style={{ cursor: "pointer" }} onClick={toggole}>
+                    <u style={{ color: "black", fontWeight: "700" }}>
+                      Create an account
+                    </u>
+                  </span>
+                </p>
+              </div>
             )}
           </form>
         </Box>
