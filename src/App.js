@@ -50,7 +50,7 @@ function App(props) {
         <Route path="/tupdate/:_id" element={<Main/>}/>
         <Route path="/update/:id" element={<Update/>}/>
         <Route path="/seeS/:id/:sem" element={<MainS/>}/>
-        <Route path="/check/:id/:series/:sem" element={<Check/>}/>
+        <Route path="/check/:id/:series/:sem/:cname/:roll" element={<Check/>}/>
         <Route path="/sinfot/:series" element={<StudentsInfo/>}/>
 
       </Routes>

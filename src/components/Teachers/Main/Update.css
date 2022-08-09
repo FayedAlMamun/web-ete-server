@@ -82,7 +82,7 @@ input{
 .frm {
   margin-right: 145px !important;
 }
-.bg {
+.bgu {
   background-image: url(../../../Images/1stb.jfif);
-  height: 100vh;
+  height: 100%;
 }

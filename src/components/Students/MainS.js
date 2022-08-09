@@ -1,12 +1,12 @@
+import { CardActionArea, Grid } from '@material-ui/core';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { userContext } from '../../App';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-import { CardActionArea, Grid } from '@material-ui/core';
-import bg from '../../Images/1stb.jfif'
+import bg from '../../Images/1stb.jfif';
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -42,7 +42,7 @@ const MainS = () => {
     const [loading, SetLoading] = useState(true);
     useEffect(() => {
         if (id === 'srs') {
-            fetch('http://localhost:5000/semRes/')
+            fetch('https://tranquil-plateau-60779.herokuapp.com/semRes/')
                 .then(res => res.json()
                     .then(data => {
                         console.log(data)
@@ -52,7 +52,7 @@ const MainS = () => {
 
         }
         if (id === 'ats') {
-            fetch('http://localhost:5000/students/')
+            fetch('https://tranquil-plateau-60779.herokuapp.com/students/')
                 .then(res => res.json()
                     .then(data => {
                         console.log(data)
@@ -62,7 +62,7 @@ const MainS = () => {
 
         }
         if (id === 'cts') {
-            fetch('http://localhost:5000/ctRes/')
+            fetch('https://tranquil-plateau-60779.herokuapp.com/ctRes/')
                 .then(res => res.json()
                     .then(data => {
                         console.log(data)
@@ -173,7 +173,7 @@ const MainS = () => {
                                                 CT Average:{Math.round((parseInt(res.ct1) + parseInt(res.ct2) + parseInt(res.ct3) + parseInt(res.ct4) - Math.min(parseInt(res.ct1), parseInt(res.ct2), parseInt(res.ct3), parseInt(res.ct4))) / 3) || ' '}
                                             </Typography>
                                             <Typography gutterBottom variant="h5" component="h2">
-                                                Attendance Percentage:{res.ap}
+                                            Attendance Marks:{res.ap.length===4? 8 :parseInt(res.ap.slice(0,2))>90 && 8  || parseInt(res.ap.slice(0,2))<50 && 0 || parseInt(res.ap.slice(0,2))>80 && 6  || parseInt(res.ap.slice(0,2))>70 && 5  || parseInt(res.ap.slice(0,2))>60 && 3  }
                                             </Typography>
                                         </CardContent>
                                     </CardActionArea>

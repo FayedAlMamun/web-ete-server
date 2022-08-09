@@ -73,7 +73,7 @@ const Login = () => {
           setUser(newUserInfo);
           // const signedInUser = { name: user.name, email: user.email,roll:user.roll,number:user.number }
           //setLoggedInUser(signedInUser)
-          fetch("http://localhost:5000/addStudents", {
+          fetch("https://tranquil-plateau-60779.herokuapp.com/addStudents", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

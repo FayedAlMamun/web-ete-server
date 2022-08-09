@@ -1,18 +1,18 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
+import { Box, Button, Modal, TextField } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import notice from "../../Images/notice.jpg"
-import result from "../../Images/results.png"
-import book from "../../Images/book.jpg"
-import { userContext } from '../../App';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Box, Button, Modal, TextField } from '@material-ui/core';
-import bg from '../../Images/1stb.jfif'
+import { userContext } from '../../App';
+import bg from '../../Images/1stb.jfif';
+import book from "../../Images/book.jpg";
+import notice from "../../Images/notice.jpg";
+import result from "../../Images/results.png";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -64,7 +64,7 @@ const StudentHome = () => {
         setSeries(newUserInfo);
     }
     useEffect(() => {
-        fetch('http://localhost:5000/teachers/')
+        fetch('https://tranquil-plateau-60779.herokuapp.com/teachers/')
             .then(res => res.json()
                 .then(data => {
                     console.log(data)

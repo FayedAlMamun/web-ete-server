@@ -46,7 +46,7 @@ const LoginG = () => {
       .signInWithPopup(provider)
       .then(function (result) {
         console.log(result);
-        history.replace(from);
+        history('/');
       })
       .catch((err) => {
         console.log(err);

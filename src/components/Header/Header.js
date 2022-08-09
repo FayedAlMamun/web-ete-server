@@ -1,15 +1,14 @@
-import React, { useContext } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import logo from '../../Images/logo-removebg-preview.png'
-import { Container, Nav } from 'react-bootstrap';
-import Navbar from 'react-bootstrap/Navbar'
-import { Link } from 'react-router-dom';
-import { userContext } from '../../App';
+import { makeStyles } from '@material-ui/core/styles';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
-import './Header.css'
+import React, { useContext } from 'react';
+import { Container, Nav } from 'react-bootstrap';
+import Navbar from 'react-bootstrap/Navbar';
+import { Link, useNavigate } from 'react-router-dom';
+import { userContext } from '../../App';
 import firebaseConfig from '../Login/firebase.config';
+import './Header.css';
 const useStyles = makeStyles((theme) => ({
     root: {
         '& > *': {
@@ -18,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 const Home = () => {
+    const navigate=useNavigate()
     if (firebase.apps.length === 0) {
         firebase.initializeApp(firebaseConfig);
     }
@@ -25,7 +25,7 @@ const Home = () => {
     const classes = useStyles();
     const handleLogin=()=>{
         firebase.auth().signOut().then(() => {
-            // Sign-out successful.
+                navigate("/")
           }).catch((error) => {
             // An error happened.
           });

@@ -30,7 +30,7 @@ const StudentsInfo = () => {
     const { series } = useParams()
     const [results, setResults] = useState([])
     useEffect(() => {
-            fetch('http://localhost:5000/students/')
+            fetch('https://tranquil-plateau-60779.herokuapp.com/students/')
                 .then(res => res.json()
                     .then(data => {
                         console.log(data)
